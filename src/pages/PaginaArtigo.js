@@ -3,6 +3,8 @@ import ListaArtigos from '../components/ListaArtigos';
 import conteudoArtigo from './ConteudoArtigo'
 import PaginaNaoEncontrada from './PaginaNaoEncontrada';
 
+const [informacoesArtigo, setInformacoesArtigo] =    useState({curtidas:0, comentarios: []}) 
+
 const PaginaArtigo = ({match}) => {
     const nome = match.params.nome
     const artigo =  conteudoArtigo.find(artigo => artigo.nome === nome)
@@ -14,6 +16,7 @@ const PaginaArtigo = ({match}) => {
         <div>
             <>
         <h1>{artigo.titulo}</h1>
+        <p>Este artigo foi curtido {informacoesArtigo.curtidas} vezes</p>
         {artigo.conteudo.map((paragrafo, key) => (
             <p key={key}>{paragrafo}</p>
         ))}
