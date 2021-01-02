@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ListaArtigos from "../components/ListaArtigos";
 import ListaComentarios from "../components/ListaComentarios";
+import SecaoCurtida from "../components/SecaoCurtida";
 import conteudoArtigo from "./ConteudoArtigo";
 import PaginaNaoEncontrada from "./PaginaNaoEncontrada";
 
@@ -29,7 +30,11 @@ const PaginaArtigo = ({ match }) => {
     <div>
       <>
         <h1>{artigo.titulo}</h1>
-        <p>Este artigo foi curtido {informacoesArtigo.curtidas} vezes</p>
+        <SecaoCurtida
+          nomeArtigo={nome}
+          qtdCurtidas={informacoesArtigo.curtidas}
+          setInformacoesArtigo={setInformacoesArtigo}
+        />
         {artigo.conteudo.map((paragrafo, key) => (
           <p key={key}>{paragrafo}</p>
         ))}
