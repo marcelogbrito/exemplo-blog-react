@@ -4,6 +4,9 @@ import conteudoArtigo from "./ConteudoArtigo";
 import PaginaNaoEncontrada from "./PaginaNaoEncontrada";
 
 const PaginaArtigo = ({ match }) => {
+  const nome = match.params.nome;
+  const artigo = conteudoArtigo.find((artigo) => artigo.nome === nome);
+
   const [informacoesArtigo, setInformacoesArtigo] = useState({
     curtidas: 0,
     comentarios: [],
@@ -11,11 +14,10 @@ const PaginaArtigo = ({ match }) => {
 
   useEffect(() => {
     setInformacoesArtigo({
-      curtidas: 3,
+      curtidas: Math.ceil(Math.random() * 10),
     });
-  });
-  const nome = match.params.nome;
-  const artigo = conteudoArtigo.find((artigo) => artigo.nome === nome);
+  }, [nome]);
+
   if (!artigo) return <PaginaNaoEncontrada />;
   const outrosArtigos = conteudoArtigo.filter((artigo) => artigo.nome !== nome);
 
