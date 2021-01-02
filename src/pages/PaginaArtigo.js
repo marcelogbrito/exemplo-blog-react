@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import FormularioAdicionaComentario from "../components/FormularioAdicionaComentario";
 import ListaArtigos from "../components/ListaArtigos";
 import ListaComentarios from "../components/ListaComentarios";
 import SecaoCurtida from "../components/SecaoCurtida";
@@ -39,6 +40,10 @@ const PaginaArtigo = ({ match }) => {
           <p key={key}>{paragrafo}</p>
         ))}
         <ListaComentarios comentarios={informacoesArtigo.comentarios} />
+        <FormularioAdicionaComentario
+          nomeArtigo={nome}
+          setInformacoesArtigo={setInformacoesArtigo}
+        />
         <h3>Outros Artigos:</h3>
         <ListaArtigos artigos={outrosArtigos} />
       </>
