@@ -14,7 +14,7 @@ const PaginaArtigo = ({ match }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(`http://localhost:8001/api/artigos/${nome}`);
+      const result = await fetch(`/api/artigos/${nome}`);
       const body = await result.json();
       setInformacoesArtigo(body);
     };
