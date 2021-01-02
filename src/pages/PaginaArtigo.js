@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ListaArtigos from "../components/ListaArtigos";
+import ListaComentarios from "../components/ListaComentarios";
 import conteudoArtigo from "./ConteudoArtigo";
 import PaginaNaoEncontrada from "./PaginaNaoEncontrada";
 
@@ -32,6 +33,7 @@ const PaginaArtigo = ({ match }) => {
         {artigo.conteudo.map((paragrafo, key) => (
           <p key={key}>{paragrafo}</p>
         ))}
+        <ListaComentarios comentarios={informacoesArtigo.comentarios} />
         <h3>Outros Artigos:</h3>
         <ListaArtigos artigos={outrosArtigos} />
       </>
