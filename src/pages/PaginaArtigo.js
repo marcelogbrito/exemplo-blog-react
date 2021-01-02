@@ -13,9 +13,12 @@ const PaginaArtigo = ({ match }) => {
   });
 
   useEffect(() => {
-    setInformacoesArtigo({
-      curtidas: Math.ceil(Math.random() * 10),
-    });
+    const fetchData = async () => {
+      const result = await fetch(`http://localhost:8001/api/artigos/${nome}`);
+      const body = await result.json();
+      setInformacoesArtigo(body);
+    };
+    fetchData();
   }, [nome]);
 
   if (!artigo) return <PaginaNaoEncontrada />;
